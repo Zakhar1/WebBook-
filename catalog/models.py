@@ -70,8 +70,7 @@ class Book(models.Model):
             max_digits=10,
             decimal_places=2,
             default=0,
-            validators=[MinValueValidator(Decimal(0.00))]
-            )
+            validators=[MinValueValidator(Decimal(0.00))])
 
 
     def __str__(self):

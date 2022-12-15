@@ -2,7 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from datetime import date
-
+from decimal import Decimal
+from django.core.validators import MinValueValidator
 # Create your models here.
 
 
@@ -65,6 +66,13 @@ class Book(models.Model):
     isbn = models.CharField(
         max_length=13, verbose_name="ISBN",
         help_text='Должно содержать 13 символов')
+    price = models.DecimalField(
+            max_digits=10,
+            decimal_places=2,
+            default=0,
+            validators=[MinValueValidator(Decimal(0.00))]
+            )
+
 
     def __str__(self):
         return self.title        
